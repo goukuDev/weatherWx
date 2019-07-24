@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/user/main",
+    "pages/detail/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#22a0e4",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#22a0e4",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "天气",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabs/home.png",
+      "selectedIconPath": "static/tabs/homes.png"
+    }, {
+      "text": "统计",
+      "pagePath": "pages/user/main",
+      "iconPath": "static/tabs/user.png",
+      "selectedIconPath": "static/tabs/users.png"
+    }],
+    "position": "bottom"
+  },
+  "usingComponents":{
+    "i-icon":"./static/iview/icon/index",
+    "i-tag":"./static/iview/tag/index",
+    "i-sticky": "./static/iview/sticky/index",
+    "i-sticky-item": "./static/iview/sticky-item/index",
+    "i-swipeout": "./static/iview/swipeout/index",
+    "i-action-sheet":"./static/iview/action-sheet/index"
+  },
+  "permission":{
+    "scope.userLocation":{
+      "desc":"你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}
