@@ -1,19 +1,20 @@
-# mpvue
+﻿# mpvue
 
 > A Mpvue project
 
 ## Build Setup
 
 ``` bash
-# 初始化项目
-vue init mpvue/mpvue-quickstart myproject
-cd myproject
+# 下载项目
+git clone https://github.com/syhITMAN/weatherWx.git
+
+cd weatherWx
 
 # 安装依赖
-yarn
+npm/cnpm install --save
 
 # 开发时构建
-npm dev
+npm/cnpm dev
 
 # 打包构建
 npm build
