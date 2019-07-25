@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/index/main",
+    "pages/kind/main",
     "pages/user/main",
-    "pages/detail/main"
+    "pages/detail/main",
+    "pages/newslist/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -17,10 +19,15 @@
     "borderStyle": "white",
 
     "list": [{
-      "text": "天气",
+      "text": "首页",
       "pagePath": "pages/index/main",
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/homes.png"
+    },{
+      "text": "分类",
+      "pagePath": "pages/kind/main",
+      "iconPath": "static/tabs/kind.png",
+      "selectedIconPath": "static/tabs/kinds.png"
     }, {
       "text": "统计",
       "pagePath": "pages/user/main",
@@ -35,7 +42,10 @@
     "i-sticky": "./static/iview/sticky/index",
     "i-sticky-item": "./static/iview/sticky-item/index",
     "i-swipeout": "./static/iview/swipeout/index",
-    "i-action-sheet":"./static/iview/action-sheet/index"
+    "i-action-sheet":"./static/iview/action-sheet/index",
+    "i-button":"./static/iview/button/index",
+    "i-collapse": "./static/iview/collapse/index",
+    "i-collapse-item": "./static/iview/collapse-item/index"
   },
   "permission":{
     "scope.userLocation":{

@@ -8,13 +8,14 @@
 # 下载项目
 git clone https://github.com/syhITMAN/weatherWx.git
 
-cd weatherWx
+#进入项目
+cd weatherWx/mpvue
 
 # 安装依赖
 npm/cnpm install --save
 
 # 开发时构建
-npm/cnpm dev
+npm/cnpm run dev
 
 # 打包构建
 npm build
