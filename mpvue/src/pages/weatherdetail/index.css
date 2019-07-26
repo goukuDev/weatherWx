@@ -16,13 +16,20 @@
   box-sizing: border-box;
 }
 .counter .weatherdetail{
-  height:200px;
+  height:calc(100% - 70px);
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.weatherdetail .weather{
+  width: 100%;
+  float: left;
   display: flex;
   flex-wrap: wrap;
 }
-.counter .weatherdetail view{
+.weatherdetail .weather view{
   width: 50%;
-  height: 50%;
+  height:30px;
+  line-height: 30px;
   text-align: center;
-  line-height:100px;
+  margin-top:10px;
 }

@@ -26,29 +26,32 @@
 
 <script>
 import {request} from 'utils';
-
+let type =null;
+let pages = 0;
 export default {
   data(){
     return{
-      type:null,
-      pages:'0-10',
       newslist:null,
       banner:null
     }
   },
   onLoad(){
-    this.type = this.$root.$mp.query.type
+    type = this.$root.$mp.query.type;
+    mpvue.setNavigationBarTitle({
+      title:this.$root.$mp.query.item
+    })
+    this.getnewslist(type,pages)
   },
-  mounted(){
-    this.getnewslist(this.type,this.pages)
+  onUnload(){
+    Object.assign(this, this.$options.data())
   },
   methods:{
-    getnewslist(type,pages){
-      request('https://3g.163.com/touch/reconstruct/article/list/'+type+'/'+pages+'.html')
+    getnewslist(listtype,listpages){
+      request('https://3g.163.com/touch/reconstruct/article/list/'+listtype+'/'+pages+'-'+pages*1+10+'.html')
       .then(res=>{
         let data  = '{'+res.data.split('artiList({')[1].split('})')[0]+'}';
-        this.newslist = JSON.parse(data)[type]
-        this.banner = JSON.parse(data)[type].slice(0,3)
+        this.newslist = JSON.parse(data)[listtype]
+        this.banner = JSON.parse(data)[listtype].slice(0,3)
       })
     },
   }

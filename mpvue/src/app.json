@@ -3,8 +3,9 @@
     "pages/index/main",
     "pages/kind/main",
     "pages/user/main",
-    "pages/detail/main",
-    "pages/newslist/main"
+    "pages/weatherdetail/main",
+    "pages/newslist/main",
+    "pages/todydetail/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -8,15 +8,18 @@
         </i-collapse-item>
     </i-collapse>
     <div class="kindbox">
-      <div v-for="(item,index) in allTopicList" :key="index" class='kindnews'>
+      <div v-for="(item,index) in allTopicList" :key="index" class='kindnews' @click="intolist(index)">
         <title style="font-size:20px;font-weight:600;height:50px;display:block;line-height:50px;">{{item[0].category}}</title>
         <div v-for="(data,key) in item" :key="key" class="newslistdetail" v-if="data.title">
           <div class="left">
             <div class="title">{{data.title}}</div>
             <span style="color:#b4b4b4;font-size:12px;">{{data.source}}</span>
           </div>
-          <div class="right" v-if="data.picInfo.length" :style="'background:url('+data.picInfo[0].url+') no-repeat center center;border-radius:3px;background-size:130px 80px;'">
+          <!-- <div class="right" v-if="data.picInfo.length" :style="'background:url('+data.picInfo[0].url+') no-repeat center center;border-radius:3px;background-size:130px 80px;'">
             
+          </div> -->
+          <div class="right" v-if="data.picInfo.length">
+            <img :src="data.picInfo[0].url" alt="" srcset="" style="width:100%;height:80px;border-radius:3px;">
           </div>
         </div>
       </div>
@@ -33,27 +36,33 @@ export default {
       newslist:[
         {
           name:"新闻",
-          type:"BBM54PGAwangning"
+          type:"BBM54PGAwangning",
+          kind:"toutiao"
         },
         {
           name:"娱乐",
-          type:"BA10TA81wangning"
+          type:"BA10TA81wangning",
+          kind:"ent"
         },
         {
           name:"体育",
-          type:"BA8E6OEOwangning"
+          type:"BA8E6OEOwangning",
+          kind:"sports"
         },
         {
           name:"财经",
-          type:"BA8EE5GMwangning"
+          type:"BA8EE5GMwangning",
+          kind:"money"
         },
         {
           name:"军事",
-          type:"BAI67OGGwangning"
+          type:"BAI67OGGwangning",
+          kind:"war"
         },
         {
           name:"科技",
-          type:"BA8D4A3Rwangning"
+          type:"BA8D4A3Rwangning",
+          kind:"tech"
         },
         {
           name:"手机",
@@ -61,7 +70,8 @@ export default {
         },
         {
           name:"汽车",
-          type:"BA8DOPCSwangning"
+          type:"BA8DOPCSwangning",
+          kind:"auto"
         },
         {
           name:"旅游",
@@ -69,27 +79,42 @@ export default {
         },
         {
           name:"教育",
-          type:"BA8FF5PRwangning"
+          type:"BA8FF5PRwangning",
+          
         }
       ],
       allTopicList:null,
     }
   },
   onLoad(){
-    request('https://3g.163.com/touch/api/pagedata/index_yaowen?callback=allTopicList')
-    .then(res=>{
-      let data = '{'+res.data.split('allTopicList({')[1].split('})')[0]+'}';
-      this.allTopicList = JSON.parse(data).data;
+    this.getallTopicList();
+  },
+  onPullDownRefresh () {
+    this.getallTopicList();
+    mpvue.showLoading({
+      title: '加载中',
     })
   },
   methods:{
     tonewslist(item,type){
       mpvue.navigateTo({
-        url:'../../pages/newslist/main?type='+type
+        url:'../../pages/newslist/main?type='+type+'&item='+item,
       })
-      mpvue.setNavigationBarTitle({
-        title:item+'频道'
+    },
+    getallTopicList(){
+      request('https://3g.163.com/touch/api/pagedata/index_yaowen?callback=allTopicList')
+      .then(res=>{
+        let data = '{'+res.data.split('allTopicList({')[1].split('})')[0]+'}';
+        this.allTopicList = JSON.parse(data).data;
+        setTimeout(()=>{
+          mpvue.stopPullDownRefresh();
+          mpvue.hideLoading();
+        },2000);
       })
+    },
+    intolist(index){
+      if(!!this.newslist.filter(o=>o.kind==index).length)
+        this.tonewslist(this.newslist.filter(o=>o.kind==index)[0].name,this.newslist.filter(o=>o.kind==index)[0].type)
     }
   }
 }

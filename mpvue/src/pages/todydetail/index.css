@@ -1,0 +1,43 @@
+.todydetail{
+    width: 100%;
+    height: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    background: #9194a0;
+}
+.todydetail .top{
+    height: 30%;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.todydetail .top view:first-child{
+    font-size: 30px;
+}
+.todydetail .top view:last-child{
+    font-size:14px;
+    text-align:center;
+    color:rgba(0,0,0,0.6);
+}
+.todydetail .bottom{
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.todydetail .bottom view{
+    flex: 33%;
+    height: 60px;
+    text-align: center;
+}
+.bottom view label{
+    display: block;
+    height: 50%;
+    line-height: 25px;
+}
+.bottom view label:last-child{
+    color:rgba(0,0,0,0.6);
+}
