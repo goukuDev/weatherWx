@@ -1,0 +1,51 @@
+.lifedetail{
+    height: 100%;
+}
+.lifedetail .autofocus{
+    height: 40px;
+    position: relative;
+}
+.autofocus input{
+    float:left;
+    width:90%;
+    height:100%;
+    line-height:40px;
+    padding-left:10px;
+    box-sizing:border-box;
+    color:#666;
+}
+.autofocus .search{
+    float:left;
+    width:10%;
+    height:100%;
+    line-height:40px;
+    text-align:center;
+    background:#396de5;
+    color:white;
+    font-size:15px;
+}
+.lifedetail .lifelist{
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.lifelist .lists{
+    height: 56px;
+    text-align:left;
+    padding: 3px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+    margin: 0 10px;
+}
+.lifelist .lists view:first-child{
+    height: 35px;
+    line-height: 35px;
+    font-size:18px;
+    color: #444;
+}
+.lifelist .lists view:last-child{
+    height: 15px;
+    line-height:15px;
+    font-size:13px;
+    color: #666;
+}

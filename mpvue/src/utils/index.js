@@ -18,7 +18,7 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
-export function request(url, data, header, method){
+export function request(url, header, data, method){
   return new Promise((resolve, reject) => {
     mpvue.request({
       url: url,

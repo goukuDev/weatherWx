@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/kind/main",
-    "pages/user/main",
+    "pages/news/main",
+    "pages/life/main",
     "pages/weatherdetail/main",
     "pages/newslist/main",
-    "pages/todydetail/main"
+    "pages/todydetail/main",
+    "pages/lifedetail/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -20,18 +21,18 @@
     "borderStyle": "white",
 
     "list": [{
-      "text": "首页",
+      "text": "天气",
       "pagePath": "pages/index/main",
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/homes.png"
     },{
-      "text": "分类",
-      "pagePath": "pages/kind/main",
+      "text": "新闻",
+      "pagePath": "pages/news/main",
       "iconPath": "static/tabs/kind.png",
       "selectedIconPath": "static/tabs/kinds.png"
     }, {
-      "text": "统计",
-      "pagePath": "pages/user/main",
+      "text": "生活",
+      "pagePath": "pages/life/main",
       "iconPath": "static/tabs/user.png",
       "selectedIconPath": "static/tabs/users.png"
     }],

@@ -1,0 +1,18 @@
+.life{
+  height: 100%;
+  overflow: hidden;
+}
+.life .play{
+  position:fixed;
+  width:94%;
+  height:40px;
+  z-index:1;
+  line-height:40px;
+  margin:10px 3%;
+  background:rgba(255,255,255,0.7);
+  font-size:15px;
+  border-radius:3px;
+  color:#666;
+  padding-left:10px;
+  box-sizing: border-box;
+}

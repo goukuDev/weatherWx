@@ -65,6 +65,7 @@ import qqMap from '../../../static/js/qqmap-wx-jssdk';
 const qqmapsdk = new qqMap({
         key: 'N6JBZ-PVUCV-KJVPE-UYY2R-LZDHZ-DBFKL' //自己的key秘钥 http://lbs.qq.com/console/mykey.html 在这个网址申请
       });
+import vuex from 'store';
 let dayaqi;
 let lifeindex;
 let result;
@@ -194,7 +195,9 @@ export default {
           longitude: longitude
         },
         success: (res) =>{
-          this.region = [res.result.address_component.province, res.result.address_component.city, res.result.address_component.district]
+          this.region = [res.result.address_component.province, res.result.address_component.city, res.result.address_component.district];
+          vuex.state.location = res.result.address_component.city;
+          vuex.state.position = [latitude,longitude]
           this.getweather(this.region);
         },
         fail:  (res) => {
@@ -203,7 +206,7 @@ export default {
       });
     },
     getweather(position){
-      request('https://jisutqybmf.market.alicloudapi.com/weather/query?city='+position[2],{},{'Authorization':'APPCODE def0b8f2c0304cb59b0a7cdaa24dd000' })
+      request('https://jisutqybmf.market.alicloudapi.com/weather/query?city='+position[2],{'Authorization':'APPCODE def0b8f2c0304cb59b0a7cdaa24dd000' })
       .then(res=>{
         result =  res.data.result;
         dayaqi = result.aqi;
@@ -225,14 +228,6 @@ export default {
           mpvue.stopPullDownRefresh();
           mpvue.hideLoading();
         },2000);
-        
-        //储存选择城市历史记录
-        let data = {city:position[2],weather:result.weather+'  '+result.templow+'/'+result.temphigh}
-        let citycook = mpvue.getStorageSync('citycook') || [{}];
-        if(![].concat(...(citycook.map(o=>o.city))).includes(position[2])){
-          citycook.push(data)
-          mpvue.setStorageSync('citycook', citycook.filter(o=>!!Object.values(o).length))
-        }
       })
     },
     regionPick: function (e) {
