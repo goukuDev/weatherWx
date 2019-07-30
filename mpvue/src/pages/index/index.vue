@@ -98,16 +98,6 @@ export default {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
         var shareTickets = res.shareTickets;
-        // if (shareTickets.length == 0) {
-        //   return false;
-        // }
-        // //可以获取群组信息
-        // mpvue.getShareInfo({
-        //   shareTicket: shareTickets[0],
-        //   success: function (res) {
-        //     console.log(res)
-        //   }
-        // })
       },
       fail: function(res) {
         // 转发失败
@@ -196,9 +186,7 @@ export default {
         },
         success: (res) =>{
           this.region = [res.result.address_component.province, res.result.address_component.city, res.result.address_component.district];
-          vuex.state.location = res.result.address_component.city;
-          vuex.state.position = [latitude,longitude]
-          this.getweather(this.region);
+          // this.getweather(this.region);
         },
         fail:  (res) => {
           console.log(res);

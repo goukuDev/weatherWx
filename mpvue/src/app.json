@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/life/main",
     "pages/index/main",
     "pages/news/main",
-    "pages/life/main",
     "pages/weatherdetail/main",
     "pages/newslist/main",
     "pages/todydetail/main",
