@@ -6,7 +6,8 @@
     "pages/weatherdetail/main",
     "pages/newslist/main",
     "pages/todydetail/main",
-    "pages/lifedetail/main"
+    "pages/searchdetail/main",
+    "pages/linedetail/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",

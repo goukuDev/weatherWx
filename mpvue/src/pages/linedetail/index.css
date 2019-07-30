@@ -1,0 +1,50 @@
+.linedetail{
+    height: 100%;
+}
+.linedetail .play{
+    display:flex;
+    height:50px;
+    position:fixed;
+    z-index:1;
+    width:100%;
+    background:#fff;
+    line-height:50px;
+    font-size:15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+.linedetail .play cover-view{
+    flex: 1;
+    text-align: center;
+    line-height: 49px;
+    color: #000;
+}
+.linedetail .play .active{
+    background: #396de5;
+    color: #fff;
+}
+.linedetail .bottom{
+    position:fixed;
+    z-index:1;
+    bottom: 0;
+    height:80px;
+    border-top:1px solid rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.linedetail .bottom .money{
+    height:30px;
+    line-height:30px;
+    color:#999;
+    font-size:15px;
+}
+.linedetail .bottom .time{
+    height:50px;
+    line-height:50px;
+    font-size:18px;
+    font-weight:600;
+}
