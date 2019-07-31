@@ -12,11 +12,11 @@
         :polyline='polyline'
         show-location
         include-points
-        style="width: 100%; height:calc(100% - 80px);">
+        style="width: 100%; flex:1;">
         </map>
         <div class="bottom">
             <!-- 公交路线 -->
-            <swiper display-multiple-items="1" current duration="500" v-if="transit" indicator-dots circular @change="checkout($event)">
+            <swiper display-multiple-items="1" current='0' duration="500" v-if="transit" indicator-dots circular @change="checkout($event)">
                 <block v-for="(item,index) in transit" :key="index">
                     <swiper-item> 
                         <div style="width:calc(80% - 10px);margin-left:10px;">
@@ -28,11 +28,12 @@
             </swiper>
             <!-- 其他路线 -->
             <div v-if="showbottom">
-                <div style="width:calc(80% - 10px);margin-left:10px;float:left">
+                <div style="width:calc(80% - 10px);margin-left:10px;float:left" v-if="noway">
                     <div class="time">{{showbottom.distance}}   {{showbottom.duration}}</div>
                     <div class="money" v-if="showbottom.taxi_fare">打车约{{showbottom.taxi_fare.fare}}元</div>
                 </div>
-                <div style="width:20%;line-height:80px;text-align:center;font-size:18px;color:blue;float:left" @click="tolinedetail(showbottom)">详情</div>
+                <div v-if="noway" style="width:20%;line-height:80px;text-align:center;font-size:18px;color:blue;float:left" @click="tolinedetail(showbottom)">详情</div>
+                <div v-else style="height:100%;line-height:80px;text-align:center;font-size:18px;font-weight:600">路程太远,建议选择别的交通工具</div>
             </div>
         </div>
     </div>
@@ -89,6 +90,7 @@ export default {
             showbottom:null,
             scale:'14',
             transit:null,
+            noway:true,
         }
     },
     onLoad(){
@@ -217,11 +219,21 @@ export default {
                     latitude:pl[0].latitude,
                     longitude:pl[0].longitude
                 }
-                this.polyline = [{
-                    points: pl,
-                    color: '#3CB371',
-                    width: 6
-                }]
+                if((type == 'walking' && res.result.routes[0].distance>80000) || (type == 'bicycling' && res.result.routes[0].distance>150000)){
+                    this.polyline = [{
+                        points:[],
+                        color:'',
+                        width:''
+                    }]
+                    this.noway = false;
+                }else{
+                    this.polyline = [{
+                        points: pl,
+                        color: '#3CB371',
+                        width: 6
+                    }]
+                    this.noway = true;
+                }
                 },
                 fail: function (error) {
                     console.error(error);

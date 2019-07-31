@@ -6,6 +6,11 @@
     height: 40px;
     position: relative;
 }
+.autofocus i-icon{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+}
 .autofocus input{
     float:left;
     width:100%;

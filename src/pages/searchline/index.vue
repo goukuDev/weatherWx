@@ -2,6 +2,7 @@
     <div class="searchline">
         <div class="autofocus">
             <input placeholder="地址、公交查询" auto-focus v-model="value" @change="getsuggest(pages)"/>
+            <i-icon type="close" size="24" color="#666" v-if="value" @click="value=''"/>
             <!-- <span class="search" @click="search">搜索</span> -->
         </div>
         <div class="pointhistory" v-if="!!checkpoint.length && !value">

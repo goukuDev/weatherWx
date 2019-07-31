@@ -1,5 +1,7 @@
 .line{
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .line .play{
     display:flex;
@@ -23,12 +25,13 @@
     background: #396de5;
     color: #fff;
 }
+.line .bottom{
+    height: 80px;
+}
 .line .bottom swiper{
     height:80px;
     width: 100%;
     background: #fff;
-    /* border-top-left-radius: 5px;
-    border-top-right-radius: 5px; */
 }
 .line .bottom swiper swiper-item{
     display: flex;

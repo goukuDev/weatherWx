@@ -28,6 +28,24 @@
   line-height: 40px;
   text-align: center;
 }
+.life .backpoint{
+  position: fixed;
+  bottom:140px;
+  left:10px;
+  border-radius: 3px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  box-shadow: 1px 1px 5px #666;
+}
+.life .backpoint .bigcircle{
+  width:0;
+  height:0;
+  border-width:20px;
+  border-style:solid;
+  border-color:#000 #fff;
+}
 .life .bottom{
   position:fixed;
   bottom:10px;
@@ -59,6 +77,7 @@
   color:#fff;
   width:65px;
   float: right;
+  border-radius: 0;
 }
 .life .bottom button cover-view{
   height:100%;

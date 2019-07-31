@@ -11,9 +11,13 @@
       scale="14" 
       :markers="markers" 
       show-location
-      include-points
+      enable-rotate
       style="width: 100%; height:100%;">
     </map>
+    <cover-view class="backpoint">
+      <cover-view class="bigcircle" @click="goback">
+      </cover-view>
+    </cover-view>
     <cover-view class="bottom" v-if="showbottom">
       <cover-view class="title">{{chooseitem.title}}</cover-view>
       <cover-view class="address">{{chooseitem.address}}</cover-view>
@@ -118,6 +122,17 @@ export default {
         iconPath:''
       }];
       vuex.state.choosepoint = {};
+    },
+    //回到原点
+    goback(){
+      this.markers = [{
+        latitude:nowpoint.latitude,
+        longitude:nowpoint.longitude,
+      }];
+      this.localtion = {
+        latitude:nowpoint.latitude,
+        longitude:nowpoint.longitude
+      }
     }
   },
   onShow(){
