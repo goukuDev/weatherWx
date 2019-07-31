@@ -1,7 +1,8 @@
-.lifedetail{
+.searchline{
     height: 100%;
 }
-.lifedetail .autofocus{
+/* 搜索框 */
+.searchline .autofocus{
     height: 40px;
     position: relative;
 }
@@ -27,7 +28,51 @@
     color:white;
     font-size:15px;
 }
-.lifedetail .lifelist{
+/* 历史搜索记录 */
+.searchline .pointhistory{
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.pointhistory label{
+    display:block;
+    margin:0 10px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    font-size:15px;
+}
+.pointhistory .lists{
+    height: 58px;
+    text-align:left;
+    padding: 4px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+    margin: 0 10px;
+}
+.pointhistory .lists:last-child{
+    border: none;
+}
+.pointhistory .lists view:first-child{
+    height: 35px;
+    line-height: 35px;
+    font-size:18px;
+    color: #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pointhistory .lists view:last-child{
+    height: 15px;
+    line-height:15px;
+    font-size:13px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 当前搜索列表 */
+.searchline .lifelist{
     height: calc(100% - 40px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

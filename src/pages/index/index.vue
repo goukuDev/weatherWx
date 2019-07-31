@@ -82,7 +82,7 @@ export default {
       hourlist:[]
     }
   },
-  mounted(){
+  onLoad(){
     this.getUserLocation();
   },
   //转发分享

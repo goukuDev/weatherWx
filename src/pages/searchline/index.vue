@@ -1,11 +1,21 @@
 <template>
-    <div class="lifedetail">
+    <div class="searchline">
         <div class="autofocus">
             <input placeholder="地址、公交查询" auto-focus v-model="value" @change="getsuggest(pages)"/>
             <!-- <span class="search" @click="search">搜索</span> -->
         </div>
-        <div class="lifelist">
-            <ul v-if="!!suggestion.length">
+        <div class="pointhistory" v-if="!!checkpoint.length && !value">
+            <ul>
+                <li v-for="(item,index) in checkpoint" :key="index" @click="backfill(item)" class="lists">
+                    <!--渲染地址title-->
+                    <view>{{item.title}}</view>
+                    <!--渲染详细地址-->
+                    <view>{{item.address}}</view>
+                </li>
+            </ul>
+        </div>
+        <div class="lifelist" v-if="!!suggestion.length && value">
+            <ul>
                 <li v-for="item in suggestion" :key="item.id" @click="backfill(item)" class="lists">
                     <!--渲染地址title-->
                     <view :id="item.id">{{item.title}}</view>
@@ -24,12 +34,14 @@ const qqmapsdk = new qqMap({
       });
 import vuex from 'store';
 let region;
+let data;
 export default {
     data(){
         return{
             suggestion:[],
             value:'',
             pages:1,
+            checkpoint:[],
         }
     },
     onLoad(){
@@ -38,6 +50,9 @@ export default {
     },
     onUnload(){
         Object.assign(this, this.$options.data())
+    },
+    onShow(){
+        this.checkpoint = mpvue.getStorageSync('checkpoint') || [];
     },
     methods:{
         getsuggest(index){
@@ -61,9 +76,16 @@ export default {
         },
         //数据回填方法
         backfill(item) {
-            vuex.state.choosepoint = item;
             this.value = item.title;
-            if(!vuex.state.choosepoint.category.includes('公交线路')){
+            //储存搜索历史记录
+            data = {address:item.address,category:item.category,location:item.location,title:item.title};
+            this.checkpoint = mpvue.getStorageSync('checkpoint') || [];
+            if(!this.checkpoint.some(o=>o.address==data.address && o.title==data.title)){
+                this.checkpoint.unshift(data)
+                mpvue.setStorageSync('checkpoint', this.checkpoint)
+            }
+            if(!item.category.includes('公交线路')){
+                vuex.state.choosepoint = item;
                 mpvue.navigateBack({
                     delta:1,
                 })

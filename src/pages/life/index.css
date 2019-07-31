@@ -9,19 +9,31 @@
   z-index:1;
   line-height:40px;
   margin:10px 3%;
-  background:rgba(255,255,255,0.7);
+  background:#fff;
   font-size:15px;
   border-radius:3px;
   color:#666;
   padding-left:10px;
   box-sizing: border-box;
+  display: flex;
+}
+.life .play .inputbox{
+  height: 100%;
+  flex: 1;
+  line-height: 40px;
+}
+.life .play .deletebox{
+  height: 100%;
+  width: 10%;
+  line-height: 40px;
+  text-align: center;
 }
 .life .bottom{
   position:fixed;
   bottom:10px;
   width:94%;
   margin:0 3%;
-  background:rgba(255,255,255,0.7);
+  background:#fff;
   border-radius:3px;
 }
 .life .bottom .title{

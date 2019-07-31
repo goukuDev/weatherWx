@@ -1,7 +1,8 @@
 <template>
   <div class="life">
-    <cover-view class="play" @click="tolifedetail">
-      {{coverview || '地址、公交查询'}}
+    <cover-view class="play">
+      <cover-view @click="tolifedetail" class="inputbox">{{coverview || '地址、公交查询'}}</cover-view>
+      <cover-view v-if="coverview" @click="deletebox" class="deletebox">X</cover-view>
     </cover-view>
     <map 
       id="map" 
@@ -101,14 +102,22 @@ export default {
     },
     tolifedetail(){
       mpvue.navigateTo({
-        url:'../../pages/searchdetail/main?city='+region+'&value='+this.coverview,
+        url:'../../pages/searchline/main?city='+region+'&value='+this.coverview,
       })
     },
     //显示不同类型的路线图
     showlinedetail(to){
       mpvue.navigateTo({
-        url:'../../pages/linedetail/main?localtion='+JSON.stringify(nowpoint)+'&to='+JSON.stringify(to),
+        url:'../../pages/line/main?localtion='+JSON.stringify(nowpoint)+'&to='+JSON.stringify(to),
       })
+    },
+    deletebox(){
+      this.showbottom = false;
+      this.coverview = '';
+      this.markers = [{
+        iconPath:''
+      }];
+      vuex.state.choosepoint = {};
     }
   },
   onShow(){
@@ -130,8 +139,8 @@ export default {
   onHide(){
     //切换到别的tab页面时候，当前页面的信息要清空，地址要默认显示设备所在地址
     Object.assign(this, this.$options.data());
-    this.getLocation();
-    vuex.state.choosepoint = {};
+    // this.getLocation();
+    // vuex.state.choosepoint = {};
   }
 }
 </script>
