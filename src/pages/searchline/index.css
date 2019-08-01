@@ -54,11 +54,16 @@
     box-sizing: border-box;
     border-bottom: 1px solid #999;
     margin: 0 10px;
+    display: flex;
 }
 .pointhistory .lists:last-child{
     border: none;
 }
-.pointhistory .lists view:first-child{
+.pointhistory .lists .pointlist{
+    height: 100%;
+    width: 90%;
+}
+.pointlist view:nth-of-type(1){
     height: 35px;
     line-height: 35px;
     font-size:18px;
@@ -66,8 +71,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width:100%;
 }
-.pointhistory .lists view:last-child{
+.pointlist view:nth-of-type(2){
     height: 15px;
     line-height:15px;
     font-size:13px;
@@ -75,6 +81,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width:100%;
 }
 /* 当前搜索列表 */
 .searchline .lifelist{

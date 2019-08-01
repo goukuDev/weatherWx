@@ -33,13 +33,13 @@
                     <div class="money" v-if="showbottom.taxi_fare">打车约{{showbottom.taxi_fare.fare}}元</div>
                 </div>
                 <div v-if="noway" style="width:20%;line-height:80px;text-align:center;font-size:18px;color:blue;float:left" @click="tolinedetail(showbottom)">详情</div>
-                <div v-else style="height:100%;line-height:80px;text-align:center;font-size:18px;font-weight:600">路程太远,建议选择别的交通工具</div>
+                <div v-else style="height:100%;line-height:80px;text-align:center;font-size:18px;font-weight:600">路程太远,请选择其他交通工具</div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import qqMap from '../../../static/js/qqmap-wx-jssdk';
+import qqMap from 'static/js/qqmap-wx-jssdk';
 const qqmapsdk = new qqMap({
         key: 'N6JBZ-PVUCV-KJVPE-UYY2R-LZDHZ-DBFKL'
       });

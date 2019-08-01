@@ -61,7 +61,7 @@
 
 <script>
 import {request} from 'utils';
-import qqMap from '../../../static/js/qqmap-wx-jssdk';
+import qqMap from 'static/js/qqmap-wx-jssdk';
 const qqmapsdk = new qqMap({
         key: 'N6JBZ-PVUCV-KJVPE-UYY2R-LZDHZ-DBFKL' //自己的key秘钥 http://lbs.qq.com/console/mykey.html 在这个网址申请
       });
@@ -186,7 +186,7 @@ export default {
         },
         success: (res) =>{
           this.region = [res.result.address_component.province, res.result.address_component.city, res.result.address_component.district];
-          // this.getweather(this.region);
+          this.getweather(this.region);
         },
         fail:  (res) => {
           console.log(res);

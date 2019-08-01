@@ -16,6 +16,7 @@
     </map>
     <cover-view class="backpoint">
       <cover-view class="bigcircle" @click="goback">
+        <cover-view></cover-view>
       </cover-view>
     </cover-view>
     <cover-view class="bottom" v-if="showbottom">
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-import qqMap from '../../../static/js/qqmap-wx-jssdk';
+import qqMap from 'static/js/qqmap-wx-jssdk';
 const qqmapsdk = new qqMap({
         key: 'N6JBZ-PVUCV-KJVPE-UYY2R-LZDHZ-DBFKL' //自己的key秘钥 http://lbs.qq.com/console/mykey.html 在这个网址申请
       });
@@ -133,7 +134,7 @@ export default {
         latitude:nowpoint.latitude,
         longitude:nowpoint.longitude
       }
-    }
+    },
   },
   onShow(){
     //每次显示当前页面时候判断是否有选择的地址要显示，有就显示其所在位置

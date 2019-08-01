@@ -51,7 +51,7 @@ let baseWebpackConfig = {
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],
     mainFields: ['browser', 'module', 'main'],
-    modules:['components','./','node_modules','utils']
+    modules:['components','./','node_modules','utils','static']
   },
   module: {
     rules: [
