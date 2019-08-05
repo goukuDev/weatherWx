@@ -37,7 +37,7 @@ export default {
   },
   onLoad(){
     type = this.$root.$mp.query.type;
-    mpvue.setNavigationBarTitle({
+    wx.setNavigationBarTitle({
       title:this.$root.$mp.query.item
     })
     this.getnewslist(type,pages)

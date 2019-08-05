@@ -39,6 +39,7 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
+
 .pointhistory label{
     display:block;
     margin:0 10px;
@@ -47,7 +48,7 @@
     text-align:center;
     font-size:15px;
 }
-.pointhistory .lists{
+/* .pointhistory .lists{
     height: 58px;
     text-align:left;
     padding: 4px 0;
@@ -82,7 +83,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width:100%;
-}
+} */
 /* 当前搜索列表 */
 .searchline .lifelist{
     height: calc(100% - 40px);

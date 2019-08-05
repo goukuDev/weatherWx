@@ -23,7 +23,6 @@ export default {
     },
     onLoad(){
         this.aqi  = JSON.parse(this.$root.$mp.query.data);
-        console.log(this.aqi)
     }
 }
 </script>

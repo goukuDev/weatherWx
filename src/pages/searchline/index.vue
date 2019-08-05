@@ -6,24 +6,29 @@
             <!-- <span class="search" @click="search">搜索</span> -->
         </div>
         <div class="pointhistory" v-if="!!checkpoint.length && !value">
-            <ul>
-                <li v-for="(item,index) in checkpoint" :key="index" class="lists">
+            <!-- <ul> -->
+                <!-- <li v-for="(item,index) in checkpoint" :key="index" class="lists">
                     <div class="pointlist" @click="backfill(item.data)">
-                        <!--渲染地址title-->
                         <view>{{item.data.title}}</view>
-                        <!--渲染详细地址-->
                         <view>{{item.data.address}}</view>
                     </div>
                     <i-icon type='close' size='24' style="color:rgba(0,0,0,0.4);width:10%;line-height:49px;text-align:center;" @click="deletedone(item._id)"></i-icon>
-                </li>
-            </ul>
+                </li> -->
+                <i-swipeout  i-class="swipeout" v-for="(item,index) in checkpoint" :key="index" operateWidth='80'>
+                    <view slot="content">
+                        <view style="font-size:20px;">{{item.data.title}}</view>
+                        <view>{{item.data.address}}</view>
+                    </view>
+                    <view slot="button" class="i-swipeout-demo-button-group">
+                        <view class="i-swipeout-demo-button" @click="deletedone(item._id)" style="height:100%;text-align:center;line-height:75px;background:red;color:#fff;font-size:18px;">删除</view>
+                    </view>
+                </i-swipeout>
+            <!-- </ul> -->
         </div>
         <div class="lifelist" v-if="!!suggestion.length && value">
             <ul>
                 <li v-for="item in suggestion" :key="item.id" @click="backfill(item)" class="lists">
-                    <!--渲染地址title-->
                     <view :id="item.id">{{item.title}}</view>
-                    <!--渲染详细地址-->
                     <view>{{item.address}}</view>
                 </li>
                 <span @click="getsuggest(pages*1+1)">加载更多</span>
@@ -110,7 +115,7 @@ export default {
             })
             if(!item.category.includes('公交线路')){
                 vuex.state.choosepoint = item;
-                mpvue.navigateBack({
+                wx.navigateBack({
                     delta:1,
                 })
             }
@@ -126,6 +131,13 @@ export default {
     }
 }
 </script>
+<style>
+    i-swipeout .swipeout .i-swipeout-item{
+        height: 50px !important;
+        padding: 0;
+    }
+</style>
+
 <style scoped>
     @import './index.css';
 </style>

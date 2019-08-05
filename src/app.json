@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/life/main",
     "pages/index/main",
+    "pages/life/main",
     "pages/news/main",
     "pages/weatherdetail/main",
     "pages/newslist/main",

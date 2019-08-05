@@ -249,7 +249,7 @@ export default {
             Object.assign(this, this.$options.data())
         },
         tolinedetail(data){
-            mpvue.navigateTo({
+            wx.navigateTo({
                 url:'../../pages/linedetail/main?data='+JSON.stringify(data),
             })
         },

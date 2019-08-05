@@ -91,13 +91,13 @@ export default {
   },
   onPullDownRefresh () {
     this.getallTopicList();
-    mpvue.showLoading({
+    wx.showLoading({
       title: '加载中',
     })
   },
   methods:{
     tonewslist(item,type){
-      mpvue.navigateTo({
+      wx.navigateTo({
         url:'../../pages/newslist/main?type='+type+'&item='+item,
       })
     },
@@ -107,8 +107,8 @@ export default {
         let data = '{'+res.data.split('allTopicList({')[1].split('})')[0]+'}';
         this.allTopicList = JSON.parse(data).data;
         setTimeout(()=>{
-          mpvue.stopPullDownRefresh();
-          mpvue.hideLoading();
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
         },2000);
       })
     },

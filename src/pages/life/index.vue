@@ -70,7 +70,7 @@ export default {
   methods:{
     //获得微信经纬度
     getLocation: function () {
-      mpvue.getLocation({
+      wx.getLocation({
         type: 'gcj02',
         success: (res) => {
           this.getLocal(res.latitude,res.longitude)
@@ -106,13 +106,13 @@ export default {
       });
     },
     tolifedetail(){
-      mpvue.navigateTo({
+      wx.navigateTo({
         url:'../../pages/searchline/main?city='+region+'&value='+this.coverview,
       })
     },
     //显示不同类型的路线图
     showlinedetail(to){
-      mpvue.navigateTo({
+      wx.navigateTo({
         url:'../../pages/line/main?localtion='+JSON.stringify(nowpoint)+'&to='+JSON.stringify(to),
       })
     },

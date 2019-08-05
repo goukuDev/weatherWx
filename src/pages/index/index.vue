@@ -107,30 +107,31 @@ export default {
   },
   onPullDownRefresh () {
     this.getUserLocation();
-    mpvue.showLoading({
+    wx.showLoading({
       title: '加载中',
     })
   },
   methods: {
     getUserLocation: function () {
-      mpvue.getSetting({
+      wx.getSetting({
         success: (res) => {
           if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
-            mpvue.showModal({
+            wx.showModal({
               title: '请求授权当前位置',
               content: '需要获取您的地理位置，请确认授权',
               success: (res) => {
                 if (res.cancel) {
-                  mpvue.showToast({
+                  wx.showToast({
                     title: '拒绝授权',
                     icon: 'none',
                     duration: 1000
                   })
                 } else if (res.confirm) {
-                  mpvue.openSetting({
-                    success: (dataAu) => {
-                      if (dataAu.authSetting["scope.userLocation"] == true) {
-                        mpvue.showToast({
+                  wx.openSetting({
+                    success: (data) => {
+                      console.log(data)
+                      if (data.authSetting["scope.userLocation"] == true) {
+                        wx.showToast({
                           title: '授权成功',
                           icon: 'success',
                           duration: 1000
@@ -138,7 +139,7 @@ export default {
                         //再次授权，调用wx.getLocation的API
                         this.getLocation();
                       } else {
-                        mpvue.showToast({
+                        wx.showToast({
                           title: '授权失败',
                           icon: 'none',
                           duration: 1000
@@ -162,7 +163,7 @@ export default {
     },
     // 微信获得经纬度
     getLocation: function () {
-      mpvue.getLocation({
+      wx.getLocation({
         type: 'gcj02',
         success: (res) => {
           var latitude = res.latitude
@@ -213,8 +214,8 @@ export default {
         this.forecastlist = result.daily;
         this.hourlist = result.hourly.map(o=>Object.assign({},{'condition': o.weather,'hour':o.time,'temperature':o.temp}))
         setTimeout(()=>{
-          mpvue.stopPullDownRefresh();
-          mpvue.hideLoading();
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
         },2000);
       })
     },
@@ -224,7 +225,7 @@ export default {
     },
     //去到详情页
     gotodetail(index){
-      mpvue.navigateTo({
+      wx.navigateTo({
         url:'../../pages/weatherdetail/main?data='+JSON.stringify(this.forecastlist)+'&lifeindex='+JSON.stringify(lifeindex)+'&index='+index
       })
     },
@@ -240,7 +241,7 @@ export default {
         ipm2_5:result.aqi.ipm2_5,
         aqi:result.index[0].detail
       }
-      mpvue.navigateTo({
+      wx.navigateTo({
         url:'../../pages/todydetail/main?data='+JSON.stringify(data)
       })
     }
